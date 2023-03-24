@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Diet Plan Generator</title>
+  <style>
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Diet Plan Generator</h1>
+  
+  <form id="diet-form">
+    <label for="weight">Weight (in pounds):</label>
+    <input type="number" id="weight" name="weight" required>
+    
+    <label for="calories">Desired daily calorie intake:</label>
+    <input type="number" id="calories" name="calories" required>
+    
+    <label for="breakfast">Breakfast:</label>
+    <select id="breakfast" name="breakfast">
+      <option value="eggs">Eggs</option>
+      <option value="oatmeal">Oatmeal</option>
+      <option value="yogurt">Yogurt</option>
+    </select>
+    
+    <label for="lunch">Lunch:</label>
+    <select id="lunch" name="lunch">
+      <option value="salad">Salad</option>
+      <option value="sandwich">Sandwich</option>
+      <option value="soup">Soup</option>
+    </select>
+    
+    <label for="dinner">Dinner:</label>
+    <select id="dinner" name="dinner">
+      <option value="chicken">Chicken</option>
+      <option value="fish">Fish</option>
+      <option value="vegetarian">Vegetarian</option>
+    </select>
+    
+    <button type="submit">Generate Diet Plan</button>
+  </form>
+  
+  <div id="output"></div>
+  
+  <script>
+    // Define a function to get the calorie content of a food item
+    function getCalories(food) {
+      switch (food) {
+        case "eggs":
+          return 150;
+        case "oatmeal":
+          return 200;
+        case "yogurt":
+          return 120;
+        case "salad":
+          return 250;
+        case "sandwich":
+          return 350;
+        case "soup":
+          return 150;
+        case "chicken":
+          return 400;
+        case "fish":
+          return 300;
+        case "vegetarian":
+          return 250;
+        default:
+          return 0;
+      }
+    }
+    
+    // Define the function that generates the diet plan
+    function generateDietPlan(event) {
+      event.preventDefault();
+      
+      // Get the user inputs
+      const weight = document.getElementById("weight").value;
+      const calories = document.getElementById("calories").value;
+      const breakfast = document.getElementById("breakfast").value;
+      const lunch = document.getElementById("lunch").value;
+      const dinner = document.getElementById("dinner").value;
+      
+      // Calculate the calorie content of each meal
+      const breakfastCalories = getCalories(breakfast);
+      const lunchCalories = getCalories(lunch);
+      const dinnerCalories = getCalories(dinner);
+      
+      // Calculate the total calorie intake for the day and the remaining calories
+      const totalCalories = breakfastCalories + lunchCalories + dinnerCalories;
+      const remainingCalories = calories - totalCalories;
+      
+      // Calculate the percentage of calories from each meal
+      const breakfastPortion = Math.round((breakfastCalories / totalCalories) * 100);
+        const lunchPortion = Math.round((lunchCalories / totalCalories) * 100);
+  const dinnerPortion = Math.round((dinnerCalories / totalCalories) * 100);
+  
+  // Calculate the grams of food to eat for each meal
+  const breakfastGrams = Math.round((breakfastCalories / 4) / 4);
+  const lunchGrams = Math.round((lunchCalories / 4) / 4);
+  const dinnerGrams = Math.round((dinnerCalories / 4) / 4);
+  
+  // Generate the diet plan output
+  const output = `
+    <h2>Diet Plan for Today</h2>
+    <p>Weight: ${weight} lbs</p>
+    <p>Desired daily calorie intake: ${calories}</p>
+    <p>Breakfast: ${breakfast} (${breakfastCalories} calories, ${breakfastPortion}% of total)</p>
+    <ul>
+      <li>${breakfastGrams} grams of ${breakfast}</li>
+    </ul>
+    <p>Lunch: ${lunch} (${lunchCalories} calories, ${lunchPortion}% of total)</p>
+    <ul>
+      <li>${lunchGrams} grams of ${lunch}</li>
+    </ul>
+    <p>Dinner: ${dinner} (${dinnerCalories} calories, ${dinnerPortion}% of total)</p>
+    <ul>
+      <li>${dinnerGrams} grams of ${dinner}</li>
+    </ul>
+    <p>Remaining calories: ${remainingCalories}</p>
+  `;
+  
+  // Display the output
+  const outputDiv = document.getElementById("output");
+  outputDiv.innerHTML = output;
+}
+
+// Attach the generateDietPlan function to the form submission event
+const form = document.getElementById("diet-form");
+form.addEventListener("submit", generateDietPlan);
+
+
+
+
+
+
+
+
+
+<!-- ....................
+This code adds an "other" option to the drop-down menu, and a hidden div element with an input field for specifying the number of calories. When the user selects the "other" option, the JavaScript code will show this div element and hide the other div elements, allowing the user to specify the number of calories for that option.
+
+You can repeat this code for the other drop-down menus, replacing "breakfast" with "lunch" and "dinner" as appropriate. Then, you can modify the generateDietPlan function to retrieve the selected option and the specified number of calories, and calculate the calorie content and portion size for that option accordingly. -->
+
+
+<!-- 
+<label for="breakfast">Breakfast:</label>
+    <select id="breakfast" name="breakfast">
+      <option value="eggs">Eggs</option>
+      <option value="oatmeal">Oatmeal</option>
+      <option value="yogurt">Yogurt</option>
+      <option value="other">Other</option>
+    </select>
+    <div id="breakfast-other" style="display: none;">
+      <label for="breakfast-calories">Calories:</label>
+      <input type="number" id="breakfast-calories" name="breakfast-calories">
+    </div>  -->
+
+
+
+

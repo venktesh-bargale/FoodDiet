@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "377059135246",
+    "project_id": "fooddiet-44d66",
+    "storage_bucket": "fooddiet-44d66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:377059135246:android:b4e281ac55187c6d96515f",
+        "android_client_info": {
+          "package_name": "com.fooddiet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "377059135246-vc8glubq4rf3678ebrveohm3e8opao5l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKSjE9A_WcHvtuTz42p4i4w6kr2tzQPr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "377059135246-vc8glubq4rf3678ebrveohm3e8opao5l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
